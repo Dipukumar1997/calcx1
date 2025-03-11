@@ -59,13 +59,25 @@
 // }
 
 // export default App;
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import Calculator from "./components/Calculaotor/Calculator"; // Ensure correct path
+
+function Home() {
+  const navigate = useNavigate();
+  return (
+    <div>
+      <button onClick={() => navigate("/cal")}>Open Calculator</button>
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
-      
-        <nav> <Link to="/cal">Open Calculator</Link> </nav>
-        <Routes> <Route path="/cal" element={<Calculator />} /> </Routes>
-     
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cal" element={<Calculator />} />
+      </Routes>
     </Router>
   );
 }
